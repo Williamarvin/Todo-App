@@ -1,10 +1,9 @@
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useState } from 'react';
 
-function NoteEntry(){
+function NoteEntry(prop){
     const [placeholder, setPlaceholder] = useState("");
     const [noteInput, setInput] = useState("");
-    const [listNotes, addNewNotes] = useState([]);
 
     function changeInput(event){
         setInput(event.target.value);
@@ -13,12 +12,12 @@ function NoteEntry(){
     function addNotes(e){
         e.preventDefault();
 
-        addNewNotes([...listNotes, noteInput]);
+        prop.addNewNotes([...prop.listNotes, noteInput]);
         setInput("");
     }
 
     return (
-        <div id='text-box' >
+        <div id='text-box'>
             <span className="icon" id="entry">➕ Add a Task</span>
 
             <input

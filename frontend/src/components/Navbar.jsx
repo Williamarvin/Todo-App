@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 function ResponsiveAppBar() {
   const menu = [
-    { label: 'New Note', href: '#new' },
+    { label: 'New Note', href: '#' },
     { label: 'All Notes', href: '#all' },
     { label: 'End of Notes', href: '#end' },
   ];
