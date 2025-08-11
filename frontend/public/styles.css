@@ -74,6 +74,24 @@
     margin-inline: 10px;
 }
 
+#noteTaking {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+#noteTaking p {
+    background-color: #383631;
+    padding: 50px;
+    border-radius: 5px;
+    flex: 1 0 calc(33.33% - 150px); /* Minimum size is one-third of the row */
+    box-sizing: border-box;
+    font-size: 20px;
+    margin-inline: 50px;
+    max-width: 100%; /* Prevents overflow */
+}
+
 /* App.css (or any imported stylesheet) */
 
 :root {

@@ -1,7 +1,10 @@
 function Note(prop) {
     return (
-        <div>
-            <h2>{prop.listNotes}</h2>
+        <div id="noteTaking">
+            {/* <h2>{prop.listNotes}</h2> */}
+            {prop.listNotes.map((item, idx) => (
+                <p key={idx}>{item}</p>
+            ))}
         </div>
     );
 }
