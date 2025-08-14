@@ -74,6 +74,41 @@
     margin-inline: 10px;
 }
 
+.note-item {
+    background-color: #383631;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto;
+    display: flex;
+    width: 1000px;
+    height: 70px;
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin-top: 25px;
+}
+
+.note-item span {
+    flex: 1;
+    background-color: #383631;
+    font-size: xx-large;
+}
+
+.note-item button {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    color: #e5e7eb;
+    cursor: pointer;
+}
+
+DeleteIcon {
+    border: None;
+    text-align: right;
+}
+
 #noteTaking {
     display: flex;
     flex-wrap: wrap;

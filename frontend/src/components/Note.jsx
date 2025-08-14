@@ -1,9 +1,13 @@
+import DeleteIcon from '@mui/icons-material/Delete';
+
 function Note(prop) {
     return (
-        <div id="noteTaking">
-            {/* <h2>{prop.listNotes}</h2> */}
-            {prop.listNotes.map((item, idx) => (
-                <p key={idx}>{item}</p>
+        <div>
+            {prop.listNotes.map((noteText, index) => (
+                <div key={index} className="note-item">
+                    <span>{noteText}</span>
+                    <button onClick={() => prop.onDelete(index)}>Delete <DeleteIcon/></button>
+                </div>
             ))}
         </div>
     );
