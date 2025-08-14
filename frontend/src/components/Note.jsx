@@ -6,7 +6,9 @@ function Note(prop) {
             {prop.listNotes.map((noteText, index) => (
                 <div key={index} className="note-item">
                     <span>{noteText}</span>
-                    <button onClick={() => prop.onDelete(index)}>Delete <DeleteIcon/></button>
+                    <button onClick={() => prop.onDelete(index)}>
+                        Delete <DeleteIcon />
+                    </button>
                 </div>
             ))}
         </div>

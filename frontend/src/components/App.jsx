@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 function App() {
     const [listNotes, addNewNotes] = useState([]);
-    
+
     function deleteNote(index) {
         addNewNotes((previousNotes) => previousNotes.filter((_, i) => i !== index));
     }
@@ -16,7 +16,7 @@ function App() {
             <ResponsiveAppBar />
             <Header />
             <NoteEntry listNotes={listNotes} addNewNotes={addNewNotes} />
-            <Note listNotes={listNotes} onDelete={deleteNote}/>
+            <Note listNotes={listNotes} onDelete={deleteNote} />
         </div>
     );
 }
