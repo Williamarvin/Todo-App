@@ -3,6 +3,7 @@ import ResponsiveAppBar from './Navbar';
 import Note from './Note';
 import NoteEntry from './NoteEntry';
 import { useState, useMemo } from 'react';
+import Container from '@mui/material/Container';
 
 function App() {
     const [listNotes, addNewNotes] = useState([]);
@@ -22,13 +23,15 @@ function App() {
 
     return (
         <div>
-            <ResponsiveAppBar />
-            <Header />
-            <NoteEntry listNotes={listNotes} addNewNotes={addNewNotes} />
-            <h1>In Progress</h1>
-            <Note listNotes={inProgress} toggleTick={toggleTick} onDelete={deleteNote} />
-            <h1>Completed</h1>
-            <Note listNotes={completed} toggleTick={toggleTick} onDelete={deleteNote} />
+            <Container maxWidth="md">
+                <ResponsiveAppBar />
+                <Header />
+                <NoteEntry listNotes={listNotes} addNewNotes={addNewNotes} />
+                <h1>In Progress</h1>
+                <Note listNotes={inProgress} toggleTick={toggleTick} onDelete={deleteNote} />
+                <h1>Completed</h1>
+                <Note listNotes={completed} toggleTick={toggleTick} onDelete={deleteNote} />
+            </Container>
         </div>
     );
 }
