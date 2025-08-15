@@ -102,6 +102,7 @@
     border: none;
     color: #e5e7eb;
     cursor: pointer;
+    font-size: large;
 }
 
 DeleteIcon {

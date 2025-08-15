@@ -6,6 +6,13 @@ import { useState } from 'react';
 
 function App() {
     const [listNotes, addNewNotes] = useState([]);
+    const [completedNotes, addCompletedNotes] = useState([]);
+
+    function completeNote(index){
+        addCompletedNotes(prevCom => {
+            addCompletedNotes((previousNotes) => previousNotes.filter((_, i) => i !== index));
+        })
+    }
 
     function deleteNote(index) {
         addNewNotes((previousNotes) => previousNotes.filter((_, i) => i !== index));
