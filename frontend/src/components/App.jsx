@@ -2,20 +2,22 @@ import Header from './Header';
 import ResponsiveAppBar from './Navbar';
 import Note from './Note';
 import NoteEntry from './NoteEntry';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 function App() {
     const [listNotes, addNewNotes] = useState([]);
-    const [completedNotes, addCompletedNotes] = useState([]);
 
-    function completeNote(index){
-        addCompletedNotes(prevCom => {
-            addCompletedNotes((previousNotes) => previousNotes.filter((_, i) => i !== index));
-        })
-    }
+    const inProgress = useMemo(() => listNotes.filter((n) => !n.completed), [listNotes]);
+    const completed = useMemo(() => listNotes.filter((n) => n.completed), [listNotes]);
 
     function deleteNote(index) {
-        addNewNotes((previousNotes) => previousNotes.filter((_, i) => i !== index));
+        addNewNotes((previousNotes) => previousNotes.filter((n) => n.id !== index));
+    }
+
+    function toggleTick(index) {
+        addNewNotes((prevNotes) =>
+            prevNotes.map((n) => (n.id === index ? { ...n, completed: !n.completed } : { ...n }))
+        );
     }
 
     return (
@@ -23,7 +25,10 @@ function App() {
             <ResponsiveAppBar />
             <Header />
             <NoteEntry listNotes={listNotes} addNewNotes={addNewNotes} />
-            <Note listNotes={listNotes} onDelete={deleteNote} />
+            <h1>In Progress</h1>
+            <Note listNotes={inProgress} toggleTick={toggleTick} onDelete={deleteNote} />
+            <h1>Completed</h1>
+            <Note listNotes={completed} toggleTick={toggleTick} onDelete={deleteNote} />
         </div>
     );
 }

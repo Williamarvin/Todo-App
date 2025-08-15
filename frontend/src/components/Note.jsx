@@ -3,27 +3,17 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useState } from 'react';
 
-
 function Note(prop) {
-
-    const [tickBool, setTick] = useState(false);
-
-    function toggleTick(){
-        tickBool ? setTick(false) : setTick(true);
-    }
-    
-
     return (
         <div>
-            {prop.listNotes.map((noteText, index) => (
-                <div key={index} check={tickBool} className="note-item">
-
-                    <button onClick={toggleTick}>
-                        {tickBool ? <CheckCircleOutlineIcon/> : <CheckCircleIcon/>};
+            {prop.listNotes.map((n) => (
+                <div className="note-item">
+                    <button onClick={() => prop.toggleTick(n.id)}>
+                        {n.completed ? <CheckCircleIcon /> : <CheckCircleOutlineIcon />};
                     </button>
-                    <span>{noteText}</span>
-                    <button onClick={() => prop.onDelete(index)}>
-                        Delete <DeleteIcon/>
+                    <span>{n.text}</span>
+                    <button onClick={() => prop.onDelete(n.id)}>
+                        Delete <DeleteIcon />
                     </button>
                 </div>
             ))}

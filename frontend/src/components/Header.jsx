@@ -4,7 +4,7 @@ function Header() {
     return (
         <div id="header">
             <h1 id="title">
-                <EditNoteIcon style={{ fontSize: 'xx-large' }} /> john's Personal Todo App
+                <EditNoteIcon style={{ fontSize: 'xx-large' }} /> William's Personal Todo App
             </h1>
         </div>
     );
