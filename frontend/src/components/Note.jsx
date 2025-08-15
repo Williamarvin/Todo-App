@@ -9,7 +9,7 @@ function Note(prop) {
             {prop.listNotes.map((n) => (
                 <div className="note-item">
                     <button onClick={() => prop.toggleTick(n.id)}>
-                        {n.completed ? <CheckCircleIcon /> : <CheckCircleOutlineIcon />};
+                        {n.completed ? <CheckCircleIcon /> : <CheckCircleOutlineIcon />}
                     </button>
                     <span>{n.text}</span>
                     <button onClick={() => prop.onDelete(n.id)}>
