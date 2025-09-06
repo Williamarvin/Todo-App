@@ -1,6 +1,6 @@
 ## Installation
 
-Step-by-step instructions on how to get the development environment running.
+Step-by-step instructions on how to get the development environment running. Developed by William. 
 
 ### Clone this project and navigate to project dir
 
