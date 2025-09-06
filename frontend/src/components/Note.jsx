@@ -4,6 +4,13 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useState } from 'react';
 
 function Note(prop) {
+
+    const [editable, setEditable] = useState(true);
+
+    function changeEditable(){
+        editable ? setEditable(false) : setEditable(true);
+    }
+
     return (
         <div>
             {prop.listNotes.map((n) => (
@@ -11,7 +18,10 @@ function Note(prop) {
                     <button onClick={() => prop.toggleTick(n.id)}>
                         {n.completed ? <CheckCircleIcon /> : <CheckCircleOutlineIcon />}
                     </button>
-                    <span>{n.text}</span>
+                    <div onClick={changeEditable}>
+                        {editable ? <span>{n.text}</span> : <input onChange={prop.changeNotes} value={prop.editedNote}/>}   
+                    </div>
+                    
                     <button onClick={() => prop.onDelete(n.id)}>
                         Delete <DeleteIcon />
                     </button>

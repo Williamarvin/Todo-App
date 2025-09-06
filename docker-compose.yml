@@ -1,0 +1,23 @@
+services:
+  frontend:
+    build: ./frontend/.
+    ports:
+      - "8080:3001"
+    volumes:
+      - ./frontend/src:/app/src
+    networks:
+      - frontend-network
+
+  backend:
+    build: ./backend/.
+    ports:
+      - "8081:8080"
+    networks:
+      - backend-network
+
+    volumes:
+      - ./backend/src:/app/src
+
+networks:
+  frontend-network:
+  backend-network:

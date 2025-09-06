@@ -21,7 +21,7 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
-        "start": "cross-env DISABLE_ESLINT_PLUGIN=true BROWSER=none CHOKIDAR_USEPOLLING=true WATCHPACK_POLLING=true WATCHPACK_POLLING_INTERVAL=1000 PORT=3001 react-scripts start",
+        "start": "HOST=0.0.0.0 PORT=3001 react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",

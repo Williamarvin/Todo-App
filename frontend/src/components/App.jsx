@@ -4,15 +4,21 @@ import Note from './Note';
 import NoteEntry from './NoteEntry';
 import { useState, useMemo } from 'react';
 import Container from '@mui/material/Container';
+import { OutputBase } from '../api';
 
 function App() {
     const [listNotes, addNewNotes] = useState([]);
+    const [editedNote, changeNote] = useState("")
 
     const inProgress = useMemo(() => listNotes.filter((n) => !n.completed), [listNotes]);
     const completed = useMemo(() => listNotes.filter((n) => n.completed), [listNotes]);
 
     function deleteNote(index) {
         addNewNotes((previousNotes) => previousNotes.filter((n) => n.id !== index));
+    }
+
+    function changeNotes(){
+        
     }
 
     function toggleTick(index) {

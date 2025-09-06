@@ -12,21 +12,21 @@ export async function fetchNotes(){
 }
 
 export async function addNotes(newNote){
-    const r = await fetch(`${BASE}/notes`,
-        method = "POST",
-        headers = { "Content-Type": "application/json " },
-        body = JSON.stringify({ id: newNote.id, text: newNote.text, completed: newNote.completed })
-    )
+    const r = await fetch(`${BASE}/notes`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: newNote.id, text: newNote.text, completed: newNote.completed })
+    })
     if (!r.ok) throw new Error("Failed to create note");
-    return r.json();;
+    return r.json();
 }
 
 export async function updateNote(id, patchNote){
-    const r = await fetch(`${BASE}/notes/${id}`, 
-        headers = {"Content-Type": "application/json"},
-        method = "PATCH",
-        body = JSON.stringify({ id: newNote.id, text: newNote.text, completed: newNote.completed })
-    );
+    const r = await fetch(`${BASE}/notes/${id}`, {
+        headers: {"Content-Type": "application/json"},
+        method: "PATCH",
+        body: JSON.stringify({ id: patchNote.id, text: patchNote.text, completed: patchNote.completed })
+    });
 }
 
 export async function deleteNote(id){
