@@ -1,14 +1,14 @@
 package com.example.todo;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
 @RestController
-@RequestMapping("/api/todos")
+@RequestMapping("/api")
 public class TodoController {
-    
+
+    @GetMapping("/notes")
+    public String getAllTodos() {
+        // Logic to retrieve all todos
+        return "Hello World!!";
+    }
 }

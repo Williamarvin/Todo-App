@@ -1,40 +1,17 @@
-# ---- Build stage ----
-FROM eclipse-temurin:21-jdk-alpine AS build
+# Use official Maven image with OpenJDK
+FROM maven:3.9.6-eclipse-temurin-21
+
+# Set working directory
 WORKDIR /app
-
-# Install needed tools (optional; helps with native libs, git versioning, etc.)
-RUN apk add --no-cache git
-
-# Cache dependencies first
-COPY mvnw ./
-COPY .mvn .mvn
 COPY pom.xml .
-RUN chmod +x mvnw && ./mvnw -B -q -DskipTests dependency:go-offline
 
-# Copy sources and build
-COPY src src
-# Use -DskipTests in CI; remove if you want tests to run
-RUN ./mvnw -B -DskipTests package
+VOLUME ["/app/data", "/app/src"]
 
-# ---- Runtime stage ----
-FROM eclipse-temurin:21-jre-alpine
-WORKDIR /app
+# Run Maven build
+RUN mvn dependency:resolve
 
-# Add a non-root user for security
-RUN addgroup -S spring && adduser -S spring -G spring
-USER spring:spring
-
-# Copy the fat JAR built in the previous stage
-# Adjust the path if your artifactId/version differ
-COPY --from=build /app/target/*.jar /app/app.jar
-
-# JVM runtime tuning (adjust as needed)
-ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75 -XX:InitialRAMPercentage=50 -XX:+ExitOnOutOfMemoryError"
+# Expose ports (if needed for networking)
 EXPOSE 8080
 
-# Health endpoint can be adjusted if you use Spring Actuator
-HEALTHCHECK --interval=30s --timeout=3s --start-period=20s --retries=3 \
-  CMD wget -qO- http://localhost:8080/actuator/health | grep -q '"status":"UP"' || exit 1
-
-# ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -jar /app/app.jar" ]
+# Keep the container running
 CMD ["tail", "-f", "/dev/null"]
