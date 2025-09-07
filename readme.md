@@ -54,6 +54,8 @@ docker exec -it todo_app-backend-1 bash
 mvn spring-boot:run
 ```
 
+### Frontend server guide
+
 #### Execute into the terminal of the frontend react environment
 
 ```sh
