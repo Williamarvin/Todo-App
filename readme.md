@@ -45,13 +45,13 @@ For more details regarding how Docker Volume works, check https://docs.docker.co
 #### Execute into the terminal of the backend Java environment
 
 ```sh
-docker exec -it todo_app-backend-1 sh
+docker exec -it todo_app-backend-1 bash
 ```
 
 #### Inside the container terminal, run the following to initialize the Spring server
 
 ```sh
-sh -c "java $JAVA_OPTS -jar /app/app.jar"
+mvn spring-boot:run
 ```
 
 #### Execute into the terminal of the frontend react environment
