@@ -2,9 +2,9 @@ import Header from './Header';
 import ResponsiveAppBar from './Navbar';
 import Note from './Note';
 import NoteEntry from './NoteEntry';
+import { TestResponse } from './FetchBackend';
 import { useState, useMemo } from 'react';
 import Container from '@mui/material/Container';
-import { OutputBase } from '../api';
 
 function App() {
     const [listNotes, addNewNotes] = useState([]);
@@ -32,6 +32,7 @@ function App() {
             <Container maxWidth="md">
                 <ResponsiveAppBar />
                 <Header />
+                <h1>Template: </h1><TestResponse/>
                 <NoteEntry listNotes={listNotes} addNewNotes={addNewNotes} />
                 <h1>In Progress</h1>
                 <Note listNotes={inProgress} toggleTick={toggleTick} onDelete={deleteNote} />

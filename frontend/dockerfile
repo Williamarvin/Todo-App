@@ -8,4 +8,7 @@ RUN npm ci
 COPY . .
 
 EXPOSE 3001
+
 CMD ["npm", "start"]
+# Keep the container running
+# CMD ["tail", "-f", "/dev/null"]

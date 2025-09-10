@@ -6,18 +6,17 @@ services:
     volumes:
       - ./frontend/src:/app/src
     networks:
-      - frontend-network
+      - my-network
 
   backend:
     build: ./backend/.
     ports:
       - "8081:8080"
     networks:
-      - backend-network
+      - my-network
 
     volumes:
       - ./backend/src:/app/src
 
 networks:
-  frontend-network:
-  backend-network:
+  my-network:

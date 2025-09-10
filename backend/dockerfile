@@ -13,5 +13,6 @@ RUN mvn dependency:resolve
 # Expose ports (if needed for networking)
 EXPOSE 8080
 
+# CMD ["mvn", "spring-boot:run"]
 # Keep the container running
 CMD ["tail", "-f", "/dev/null"]

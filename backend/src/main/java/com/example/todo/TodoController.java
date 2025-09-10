@@ -1,14 +1,15 @@
 package com.example.todo;
 
 import org.springframework.web.bind.annotation.*;
+import java.util.Map;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class TodoController {
 
     @GetMapping("/notes")
-    public String getAllTodos() {
-        // Logic to retrieve all todos
-        return "Hello World!!!";
+    public Map<String, String> getAllTodos() {
+        return Map.of("message", "Hello World!!!");
     }
 }
