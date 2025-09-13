@@ -5,7 +5,7 @@ FROM maven:3.9.6-eclipse-temurin-21
 WORKDIR /app
 COPY pom.xml .
 
-VOLUME ["/app/data", "/app/src"]
+# VOLUME ["/app/data", "/app/src"]
 
 # Run Maven build
 RUN mvn dependency:resolve

@@ -14,6 +14,7 @@ function NoteEntry(prop) {
 
         const id = crypto.randomUUID?.() ?? String(Date.now() + Math.random());
         prop.addNewNotes([...prop.listNotes, { id: id, text: noteInput, completed: false }]);
+        
         setInput('');
     }
 

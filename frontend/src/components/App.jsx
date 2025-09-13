@@ -2,7 +2,7 @@ import Header from './Header';
 import ResponsiveAppBar from './Navbar';
 import Note from './Note';
 import NoteEntry from './NoteEntry';
-import { TestResponse } from './FetchBackend';
+import { TestResponse, GetAllNotes } from './FetchBackend';
 import { useState, useMemo } from 'react';
 import Container from '@mui/material/Container';
 

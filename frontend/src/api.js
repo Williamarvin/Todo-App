@@ -5,6 +5,12 @@ export function OutputBase(){
     return <h1>{BASE}</h1>
 }
 
+export async function fetchHelloWorld(){
+    const r = await fetch(`${BASE}/helloworld`);
+    if (!r.ok) throw new Error("Failed to load notes");
+    return r.json();
+}
+
 export async function fetchNotes(){
     const r = await fetch(`${BASE}/notes`);
     if (!r.ok) throw new Error("Failed to load notes");
